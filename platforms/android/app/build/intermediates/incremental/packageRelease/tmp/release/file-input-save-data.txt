@@ -1,0 +1,35 @@
+#Internal package file, do not edit.
+#Tue Mar 05 15:30:43 CST 2019
+7.path=index.js
+2.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\release\\0
+5.set=ASSET
+0.path=classes.dex
+2.baseType=DIRECTORY
+3.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\merged_assets\\release\\mergeReleaseAssets\\out
+7.baseType=DIRECTORY
+2.set=NATIVE_RESOURCE
+1.path=lib/armeabi/libweexjsc.so
+4.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\release\\0
+7.set=ASSET
+count=8
+5.baseType=DIRECTORY
+2.path=lib/armeabi/libweexjsb.so
+5.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\merged_assets\\release\\mergeReleaseAssets\\out
+4.set=NATIVE_RESOURCE
+3.path=dist/index.js
+6.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\release\\0
+3.baseType=DIRECTORY
+1.set=NATIVE_RESOURCE
+4.path=lib/armeabi/libweexjss.so
+7.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\merged_assets\\release\\mergeReleaseAssets\\out
+6.set=NATIVE_RESOURCE
+1.baseType=DIRECTORY
+6.baseType=DIRECTORY
+5.path=main.js
+0.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+0.baseType=DIRECTORY
+3.set=ASSET
+6.path=lib/x86/libweexjsc.so
+1.base=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\transforms\\stripDebugSymbol\\release\\0
+4.baseType=DIRECTORY
+0.set=DEX

@@ -1,0 +1,4 @@
+#Fri Mar 08 13:54:08 CST 2019
+base.0=D\:\\Users\\Desktop\\weex-demo2\\platforms\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+renamed.0=classes.dex
+path.0=classes.dex
