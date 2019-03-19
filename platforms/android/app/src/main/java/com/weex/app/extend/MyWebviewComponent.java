@@ -1,6 +1,7 @@
 package com.weex.app.extend;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +18,7 @@ import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -29,7 +31,9 @@ import com.taobao.weex.dom.WXDomObject;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
+import com.weex.app.util.MyUtils;
 
+import java.util.Arrays;
 
 
 public class MyWebviewComponent extends WXComponent<WebView> {
@@ -37,10 +41,14 @@ public class MyWebviewComponent extends WXComponent<WebView> {
     private WebView webView;
     // 当前weex实例
     private WXSDKInstance instance;
-    // 链接
+    // 来源链接
     private String url = "";
-    private static final String TAG = "webview";
-
+    // 当前链接
+    private String currentUrl = "";
+    // tag
+    private final String TAG = "webview";
+    //polyfill
+    private String polyfillJsStr = "";
 
     // 构造方法，获得当前weex实例instance
     public MyWebviewComponent(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
@@ -84,6 +92,8 @@ public class MyWebviewComponent extends WXComponent<WebView> {
         webSettings.setDefaultTextEncodingName("utf-8");
         webView.loadUrl(url);
 
+        this.polyfillJsStr = MyUtils.getFileToString(instance.getContext(), "static/polyfill-7.2.5.min.js");
+
         // WebViewClient设置
         webView.setWebViewClient(new WebViewClient(){
             @Override
@@ -96,17 +106,17 @@ public class MyWebviewComponent extends WXComponent<WebView> {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                currentUrl = url;
                 super.onPageStarted(view, url, favicon);
 
-                Log.d(TAG,"网页开始加载");
+                Log.d(TAG,"网页开始加载>>>>>>>>>>>>>" + url);
             }
 
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                Log.d(TAG, "网页加载完成" + url);
+                Log.d(TAG, "网页加载完成");
                 // 触发组件的finish事件
                 fireEvent("finish");
             }
@@ -117,16 +127,41 @@ public class MyWebviewComponent extends WXComponent<WebView> {
 
                 Log.d(TAG,"http错误：" + errorCode + " " + description);
             }
+
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 super.onReceivedSslError(view, handler, error);
 
                 Log.d(TAG,"https错误：" + error);
             }
+
+            @Override
+            public void  onLoadResource(WebView view, String url) {
+                super.onLoadResource(view, url);
+            }
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                // 可以拦截请求资源
+                WebResourceResponse response = super.shouldInterceptRequest(view, request);
+                String url = request.getUrl().toString();
+
+                return response;
+            }
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
                 // 可以拦截请求资源
-                return super.shouldInterceptRequest(view, url);
+                WebResourceResponse response = super.shouldInterceptRequest(view, url);
+
+                /*if (!TextUtils.isEmpty(url) && url.equals("https://xxxx/xxx")) {
+                    Log.d(TAG, "拦截请求资源" + url);
+
+                    InputStream input = response.getData();
+                    Log.d(TAG, inputStreamToString(input).substring(0, 10));
+                }*/
+
+                return response;
             }
         });
 
@@ -153,12 +188,39 @@ public class MyWebviewComponent extends WXComponent<WebView> {
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.d(TAG, "Console[" + consoleMessage.messageLevel() + "] " + consoleMessage.message());
+                String level = consoleMessage.messageLevel().toString().toLowerCase();
+                String msg = "【console." + level + "】 " + consoleMessage.message();
+
+                if (level.equals("error"))
+                    Log.e(TAG, msg);
+                else
+                    Log.d(TAG, msg);
 
                 return super.onConsoleMessage(consoleMessage);
             }
-        });
 
+            @Override
+            public void onProgressChanged(WebView view, int progress) {
+                // 加载进度
+                super.onProgressChanged(view, progress);
+                Log.d(TAG, "加载进度：" + progress + "/100 ");
+
+                //evaluateJs("console.log(window._AAA + ' " + progress + "' + ' = ' + '" + currentUrl  + "' + ' = ' + '" + view.getUrl().toString() + "' + ' = ' + location.href);window._AAA = 'log'");
+                evaluateJs("(function (url) {\n" +
+                        "  if (url == location.href && !window._PAPE_INIT) {\n" +
+                        "    window._PAPE_INIT = 1;\n" +
+                        "    return 1;\n" +
+                        "  }\n" +
+                        "})(\"" + currentUrl + "\");", new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        if (value.equals("1")) {
+                            onPageInitialized(webView, currentUrl);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -182,6 +244,22 @@ public class MyWebviewComponent extends WXComponent<WebView> {
     }
 
 
+    // 新增WebViewClient回调事件
+    public void onPageInitialized(WebView view, String url) {
+        Log.d(TAG, "网页初始化");
+
+        // 黑名单
+        final String[] blackLists = new String[] {
+                "https://www.saxotrader.com/disclaimer"
+        };
+        if (Arrays.asList(blackLists).contains(url)) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) { // Android 5.1以下
+                Log.d(TAG, "执行js");
+                evaluateJs(this.polyfillJsStr);
+            }
+        }
+    }
+
     // native调用js
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @JSMethod
@@ -204,5 +282,29 @@ public class MyWebviewComponent extends WXComponent<WebView> {
     @JavascriptInterface
     public void postMessage(String method, String param){
         Log.d(TAG, "js调用native method:" + method + " param:" + param);
+    }
+
+    // 执行js
+    private void evaluateJs(String jsStr) {
+        evaluateJs(jsStr, null);
+    }
+    private void evaluateJs(String jsStr, final ValueCallback<String> callback) {
+        String script = "javascript:" + jsStr;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // Android 4.4及以上
+
+            webView.evaluateJavascript(script, new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {
+                    if (callback != null) {
+                        callback.onReceiveValue(value);
+                    }
+                    Log.d(TAG, "evaluateJs返回值：" + value);
+                }
+            });
+
+        } else {
+            webView.loadUrl(script);
+        }
     }
 }

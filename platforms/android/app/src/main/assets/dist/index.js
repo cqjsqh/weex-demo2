@@ -2807,7 +2807,7 @@ exports.default = {
   methods: {
     tel: function tel() {
       try {
-        weex.requireModule('tel').call('18521092102');
+        weex.requireModule('tel').call('14455554444');
       } catch (_ref) {
         var message = _ref.message;
 
@@ -2815,7 +2815,7 @@ exports.default = {
       }
     },
     finish: function finish() {
-      this.$refs.myWeb.evaluateJavascript('alert("我是js的alert")');
+      // this.$refs.myWeb.evaluateJavascript('console.log("console打印")');
     }
   }
 };
@@ -2835,10 +2835,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     ref: "myWeb",
     staticStyle: {
       width: "720px",
-      height: "600px"
+      height: "1000px"
     },
     attrs: {
-      "src": "https://www.taobao.com/"
+      "src": "https://saxo.fdzq.com/login/"
     },
     on: {
       "finish": _vm.finish
