@@ -50,6 +50,51 @@ const getEntryFile = () => {
   }
 }
 
+
+// 多页面
+const getPageFileContent = (source) => {
+  let dependence = `import Vue from 'vue'\n`;
+  dependence += `import weex from 'weex-vue-render'\n`;
+  dependence += `weex.init(Vue)\n`;
+  dependence += `/* weex initialized here, please do not move this line */\n\n`;
+  
+  if (isWin) {
+    source = source.replace(/\\/g,'\\\\');
+  }
+  
+  let contents = `import App from '${source}'\n`;
+  contents += `import mixins from '@/assets/mixins'\n\n`;
+  contents += `Vue.mixin(mixins);\n`;
+  contents += `new Vue(Vue.util.extend({ el: '#root' }, App))`;
+  
+  return dependence + contents;
+};
+const getPageFile = (pathArr) => {
+  var entrys = {};
+  
+  if (typeof pathArr === 'string') {
+    pathArr = [pathArr];
+  }
+  
+  pathArr.forEach( item => {
+    glob.sync(item).forEach( filePath => {
+      let extname = path.extname(filePath);
+      let basename = path.basename(filePath, extname);
+      let fullname = path.join(__dirname, '../', filePath);
+  
+      basename = `page/${basename}`.toLocaleLowerCase();
+      const pageFilePath = `${basename}.js`;
+      const pageFile = path.join(vueWebTemp, pageFilePath);
+      fs.outputFileSync(pageFile, getPageFileContent(path.relative(path.join(pageFile, '../'), fullname)));
+  
+      entrys[basename] = pageFile;
+    })
+  })
+  
+  return entrys;
+};
+const pageEntry = getPageFile(['src/pages/*.vue']);
+
 // The entry file for web needs to add some library. such as vue, weex-vue-render
 // 1. src/entry.js 
 // import Vue from 'vue';
@@ -101,7 +146,7 @@ const plugins = [
 
 // Config for compile jsbundle for web.
 const webConfig = {
-  entry: Object.assign(webEntry, {
+  entry: Object.assign(webEntry, pageEntry, {
     'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
   }),
   output: {
@@ -180,7 +225,8 @@ const webConfig = {
 };
 // Config for compile jsbundle for native.
 const weexConfig = {
-  entry: weexEntry,
+  //entry: weexEntry,
+  entry: Object.assign(weexEntry, pageEntry),
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].js'
