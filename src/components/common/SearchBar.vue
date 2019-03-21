@@ -8,7 +8,6 @@
         font-family: iconfont;
     }
     .w{
-        width: 750px;
         padding: 16px 20px;
         background-color: #efeff4;
     }

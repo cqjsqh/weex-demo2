@@ -7,7 +7,6 @@
 </template>
 <style scoped>
     .w{
-        width: 750px;
         background-color: #fff;
         position: relative;
     }
@@ -17,6 +16,7 @@
         position: absolute;
         left: 0;
         right: 0;
+        z-index: 1;
     }
     .top{
         top: 0;

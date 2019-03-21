@@ -1,26 +1,26 @@
 <template>
-    <div class="wrapper">
+    <scroller class="page" show-scrollbar="false">
         <header-bar title="发现"/>
 
         <module-box class="gap">
-            <module-item :data="{ icon: local('find_icon-circle.png'), text: '朋友圈'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-circle.png'), text: '朋友圈'}"/>
         </module-box>
 
         <module-box class="gap">
-            <module-item :data="{ icon: local('find_icon-qrcode.png'), text: '扫一扫'}"/>
-            <module-item :data="{ icon: local('find_icon-shake.png'), text: '摇一摇'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-qrcode.png'), text: '扫一扫'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-shake.png'), text: '摇一摇'}"/>
         </module-box>
 
         <module-box class="gap">
-            <module-item :data="{ icon: local('find_icon-shopping.png'), text: '购物'}"/>
-            <module-item :data="{ icon: local('find_icon-moregame.png'), text: '游戏'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-shopping.png'), text: '购物'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-moregame.png'), text: '游戏'}"/>
         </module-box>
 
         <tab-bar/>
-    </div>
+    </scroller>
 </template>
 <style scoped>
-    .wrapper{
+    .page{
         flex: 1;
         justify-content: flex-start;
         padding-top: 90px;

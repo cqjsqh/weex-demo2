@@ -314,7 +314,7 @@ Vue.mixin(_mixins2.default);
 /* weex initialized here, please do not move this line */
 new Vue(Vue.util.extend({ el: '#root', router: _router2.default }, _App2.default));
 
-_router2.default.push('/me');
+_router2.default.push('/');
 
 /***/ }),
 /* 6 */
@@ -3033,7 +3033,7 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
+  "page": {
     "flex": 1,
     "justifyContent": "flex-start",
     "paddingTop": "90",
@@ -3107,34 +3107,34 @@ exports.default = {
   data: function data() {
     return {
       chatList: [{
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/header01.png',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/header01.png',
         author: '阿荡',
         msg: '来呀 快活啊',
         time: '22:04'
       }, {
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/yehua.jpg',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/yehua.jpg',
         author: '收购万达讨论群',
         msg: '夜华: 我试一试',
         time: '22:04'
       }, {
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/header01.png',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/header01.png',
         author: '收购淘宝讨论群',
         msg: '诸葛亮: 冒个泡',
         time: '22:04'
       }, {
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/sunquan.jpg',
         author: '孙权',
         msg: '孙权: 容我三思',
         time: '22:04',
         notice: 99
       }, {
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/sunshangxiang.jpg',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/sunshangxiang.jpg',
         author: '孙尚香2',
         msg: '孙尚香: 夫君,身体要紧~ ',
         time: '22:04',
         notice: 1
       }, {
-        avatar: 'https://sinacloud.net/vue-wechat/images/headers/guangyu.jpg',
+        avatar: 'http://sinacloud.net/vue-wechat/images/headers/guangyu.jpg',
         author: '关羽',
         msg: '关羽: 三姓家奴！ ',
         time: '22:04'
@@ -3158,7 +3158,8 @@ module.exports = {
     "position": "fixed",
     "top": 0,
     "left": 0,
-    "right": 0
+    "right": 0,
+    "zIndex": 9
   },
   "title": {
     "flex": 1,
@@ -3179,6 +3180,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -3244,7 +3246,8 @@ module.exports = {
     "position": "fixed",
     "bottom": 0,
     "left": 0,
-    "right": 0
+    "right": 0,
+    "zIndex": 9
   },
   "item": {
     "width": "100",
@@ -3301,6 +3304,7 @@ var config = {
     path: '/me'
   }]
 }; //
+//
 //
 //
 //
@@ -3502,7 +3506,6 @@ module.exports = {
     "fontFamily": "iconfont"
   },
   "w": {
-    "width": "750",
     "paddingTop": "16",
     "paddingRight": "20",
     "paddingBottom": "16",
@@ -3529,7 +3532,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
 //
 //
 //
@@ -3622,15 +3624,12 @@ module.exports = __vue_exports__
 
 module.exports = {
   "w": {
-    "width": "750",
-    "paddingTop": "15",
+    "paddingTop": 0,
     "paddingRight": "15",
-    "paddingBottom": "15",
+    "paddingBottom": 0,
     "paddingLeft": "15",
     "flexDirection": "row",
-    "justifyContent": "space-between",
-    "backgroundColor": "#ffffff",
-    "position": "relative"
+    "backgroundColor": "#ffffff"
   },
   "line": {
     "height": "1",
@@ -3642,7 +3641,10 @@ module.exports = {
     "bottom": 0
   },
   "left": {
-    "position": "relative"
+    "paddingTop": "15",
+    "paddingRight": "20",
+    "paddingBottom": "15",
+    "paddingLeft": 0
   },
   "icon": {
     "width": "96",
@@ -3650,26 +3652,32 @@ module.exports = {
     "borderRadius": "10"
   },
   "notice": {
-    "minWidth": "20",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "minWidth": "36",
     "height": "36",
-    "lineHeight": "36",
     "paddingTop": 0,
     "paddingRight": "8",
     "paddingBottom": 0,
     "paddingLeft": "8",
-    "textAlign": "center",
     "borderRadius": "18",
     "backgroundColor": "#f43531",
-    "fontSize": "24",
-    "color": "#ffffff",
     "position": "absolute",
-    "right": "-18",
-    "top": "-10"
+    "right": "3",
+    "top": "5",
+    "zIndex": 2
+  },
+  "notice-text": {
+    "fontSize": "24",
+    "color": "#ffffff"
   },
   "middle": {
+    "paddingTop": "15",
+    "paddingRight": 0,
+    "paddingBottom": "15",
+    "paddingLeft": 0,
     "flex": 1,
-    "justifyContent": "space-between",
-    "paddingLeft": "20"
+    "justifyContent": "space-between"
   },
   "name": {
     "fontSize": "32",
@@ -3682,6 +3690,10 @@ module.exports = {
     "textOverflow": "ellipsis"
   },
   "right": {
+    "paddingTop": "15",
+    "paddingRight": 0,
+    "paddingBottom": "15",
+    "paddingLeft": 0,
     "fontSize": "26",
     "color": "#b8b8b8"
   }
@@ -3697,6 +3709,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -3798,9 +3811,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.data.avatar
     }
-  }), (_vm.data.notice) ? _c('text', {
+  }), (_vm.data.notice) ? _c('div', {
     staticClass: ["notice"]
-  }, [_vm._v(_vm._s(_vm.data.notice))]) : _vm._e()]), _c('div', {
+  }, [_c('text', {
+    staticClass: ["notice-text"]
+  }, [_vm._v(_vm._s(_vm.data.notice))])]) : _vm._e()]), _c('div', {
     staticClass: ["middle"]
   }, [_c('text', {
     staticClass: ["name"]
@@ -3817,8 +3832,8 @@ module.exports.render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
+  return _c('scroller', {
+    staticClass: ["page"]
   }, [_c('header-bar', {
     attrs: {
       "title": "微信"
@@ -3888,7 +3903,7 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
+  "page": {
     "flex": 1,
     "justifyContent": "flex-start",
     "paddingTop": "90",
@@ -3940,8 +3955,9 @@ exports.default = {
   },
 
   data: function data() {
+    var local = this.local;
     return {
-      topContacts: [{ icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAA7VBMVEX6nTv////7tm76oUT++PH+8OH++vX7tGn92LH+7t3++/j+8ub+/Pn6nTz++fT95cv937/+/v77uXP+/fz81q396tb6oUP6q1f7sWT+/v36qVT8ypb81q7+8eT6rVv96dP92rX7uHH81az959D95s781av8z5/6qlX6o0f6pEr+79/94cT7vHn7u3j7vHr6oEL7u3f6nj77v4D7vXz8yJH++PL+7t76n0D7t3D96tX92bT93r37tWz+9u36nj37wob+9u76r1/96NH8xo7917D92LL++vb+8OL6rFr948j8zp78x4/+7+D81Kn6rVyUsFEiAAABZElEQVR4Xu3UVY7cUBSE4b+MzYzDzBNkZob9LycvltX2nXauTl4Syd8CSjrIf6JWq9W6wV6z12vuBV3+ys6uMrs72LHfUq61j1na0YpOilHYVkE7xOZEJSeYzCKVRLexuJLjGosDOQ6w6MvRx6IpRxOLCzkusJjKMcViIMcAi005NrHYkGMDk0OVHGKzWKpgucBoSwVbWIXbWrEdYpYqp2GKHZfODhndU+4+GYJGnCRxI8AfI+WeAADzI2WO5ng7Vm6StS1SLkrxdGus3PAOwDzSimiOj7vfhlox/g5kdUFWHR5GP1T0EwIVgxTwJ7++qmwEjXJQg2rnk7EcpxCXg+Lq5jx4KJdmkEgiJymhQvpINwqh5R/E4+OhbvYFPvuXdvZU64zgmX+zn2utCbzwH39Ha718BX3vhVSF13De9j0RVXhzBm97nkebqMKgC6fv/N7I+8qkDwDBx/hT9tj+PbVarfYb2XEVnzvRAPUAAAAASUVORK5CYII=', text: '新的朋友' }, { icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAABRFBMVEUrokX////4/PlmvHleuHJOsWTz+fRiunX0+vX9/v213r6GypUuo0c+qlWb06c6qFJwwIJxwYPA48jw+PLt9++a0qbP6tXm9Okto0fK6NH+/v7Y7t1NsWPT7Nk4p1B+xo7a7t6u27jo9evc8OHD5Mqm17D7/fw3p08vo0j5/Pl5xIlWtGq54MHc7+BguXNrvn36/fvi8uaZ0qbs9u4sokav27hZtm2c06h6xYux3bvS69czpUxBq1hQsmW64cPL6NFYtm02p0/v+PGEyZMypUvJ59B7xYuy3bvZ7t5huXQ5qFKf1atRsmY8qVTr9u36/Po1pk6d1Knd8OHF5cxuv4BfuHKSz6Bct3BPsmVjunaOzZz8/fwwpErN6dO54MJ8xYx5xIqo2bOe1KrI5s5bt2/q9ezu9/D3+/jX7dtErVtduHGFyZSFauUDAAABrElEQVR4Ae3S03okURSG4e9v245tO2Pbtn3/51PP7nRUwa7OeOo9X174/gI+n28xutQbifQuRRc5knBFGyphjiAY0KZAkLY9GNM2YyHaNFLVDtUR2nNNu7wFEpHL5S940h3TLrFumJD0KYkXq3JZBe7J8RAPEnJJAN/keDaBvQG5DABX5NDnFNZicokBN2Tcx1pALgHguYw3WOuXSz+QljGHtbpc6sBpGWexlpFLBuiR8QJrYbmEgZcyytjr0i5dQPqWjMfYC2mXENAno4IXa9phDfjakPEEL7IL2mYhC2fmNs/nSU7b5IBLaprGo7o2XQBOqOkkXuW1KQ88VVMQr0I7T3ZRTefwKrPzq8+vy4iE8GZmVptmZ4DbkzICr/AgNd/QNo35FDB9Ssa799gKTmmXqSCO6LqMwnVsdA5KboOdOHJVyRHvS3OY7NCw9jQ8lAWO3YlLjmKeA9WSRe2rmKwBj27KeM0Bljt0oI5l4PhdyfGBfdXKcR0iXq45mT5KDvYzWpCFwij0HJxoRVZW4Kock+ynJCslDiNLPzzRzx9tvGSVZ5w/mM/n830HT58jXBOvQSEAAAAASUVORK5CYII=', text: '群聊' }, { icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAVFBMVEUngtf///+rzu+IuumTwOv5+/1boOD9/v45jNpeoeE4jNpAkNuCtudBkdvz+Pxgo+HY6PdfouFMl92qze/a6fh2sOVIld211PHu9fuUwevd6/iMvOlg5XIrAAAAsklEQVR4Xu3Otw7DQBADUe/dKQbn7P//TwPCNFahYqnCxU7H5oE7rSiKouhiPx3PTqfYoqvukO6Q7pDukOI8Du2UK4bg3OZdN0D+P8gJyOvYCagD8jrWAvVAXscmoAHI61gGGoG8jlX17Nz3QA6HmtT1w4hjbmfZVk7ayCl/5YSTZIeeskMv3aGy7sgSjizhyBKOLOHIEo4s4cgSjizhyBKOLOHIEo4u4ejl92cdiKIo+gLx3AX8g42WOQAAAABJRU5ErkJggg==', text: '标签' }, { icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAA6lBMVEUngtcogtdfouGtz+/Z6fjz+PxKlt3O4/b///9jpOL4+/1Zn+D5+/0yiNnj7/mVwuswh9jv9vwvhthrqeNqqeOkyu7G3vTc6vjS5fa41vGLvOlCktzM4fVUnN/9/v6my+4xh9ji7vlan+C+2fNyreRlpuKjyu6iye1tquT8/f6Vwesqg9f+/v5NmN5kpeLd6/jg7flLl93C3POZxOw3i9qly+5Sm99Tm9+FuOjx9/zb6vidxuza6fgshdhXnd80idnR5Pbo8fq31fGrzu+sz++21PH1+f1Omd7k7/o4jNrK4PUrhNemzO6CtucNfNx8AAABWElEQVR4Ae3Bg3rkABiG0Xf81TbHrG27vf/LqZsnGWX6Z705h9BfIhQKRaKxeCIRj0UjBJJM6VMqSQBd3XJ0d2HW0yuX3h6M+vrl0d+HzYDqDGAyOKQ6Q8NYjKjBKBZjajCGxbgajGMRV4M4FhNqMIHFpBpMYjGlBlNYTKvBNBYzajCDyazqzGIzNy+P+TmMFuSxgNViWi7pRcwycskQQFaOLEHk5MgRRF6OPEEUJGliQpKKBFAqS1KlIknlElbVSk1vlpb0plapYrK8onersKp3K8t839q6Pm3Ahj6tr/E9m1tlfdmGHX0pb23Suerunhz9AP1y7O1W6VBmXy4HAAdyOczQiaNCTW7HAMdyqxWO8HVyKo8z3p3J4/QEP+fyuuDdpbyu8NMrr+sbgJtrefXiR/Vu7+DuVvXwowb3Dw/3aoCfhBo8PqpBAj9PCXUg8UQoFAr9oV4AkgMtYs7Eq2AAAAAASUVORK5CYII=', text: '公众号' }]
+      topContacts: [{ icon: local('contact_top-friend-notify.png'), text: '新的朋友' }, { icon: local('contact_top-addgroup.png'), text: '群聊' }, { icon: local('contact_top-tag.png'), text: '标签' }, { icon: local('contact_top-offical.png'), text: '公众号' }]
     };
   },
 
@@ -3977,7 +3993,6 @@ exports.default = {
 
 module.exports = {
   "w": {
-    "width": "750",
     "backgroundColor": "#ffffff",
     "position": "relative"
   },
@@ -3986,7 +4001,8 @@ module.exports = {
     "backgroundColor": "rgba(182,182,182,0.5)",
     "position": "absolute",
     "left": 0,
-    "right": 0
+    "right": 0,
+    "zIndex": 1
   },
   "top": {
     "top": 0
@@ -4077,7 +4093,6 @@ module.exports = {
   "icon": {
     "width": "64",
     "height": "64",
-    "fontSize": "64",
     "borderRadius": "4",
     "marginRight": "20"
   },
@@ -4085,6 +4100,12 @@ module.exports = {
     "flex": 1,
     "fontSize": "30",
     "color": "#000000"
+  },
+  "icon-m": {
+    "width": "46",
+    "height": "46",
+    "borderRadius": "2",
+    "marginRight": "36"
   }
 }
 
@@ -4134,9 +4155,19 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   props: {
+    size: {
+      type: String,
+      default: 'l'
+    },
     data: {
       type: Object,
       default: function _default() {
@@ -4158,7 +4189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: ["w"]
   }, [(_vm.data.icon) ? _c('image', {
-    staticClass: ["icon"],
+    class: _vm._f("and")('icon', _vm.size),
     attrs: {
       "src": _vm.data.icon
     }
@@ -4175,14 +4206,18 @@ module.exports.render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
+  return _c('scroller', {
+    staticClass: ["page"],
+    attrs: {
+      "showScrollbar": "false"
+    }
   }, [_c('header-bar', {
     attrs: {
       "title": "通讯录"
     }
-  }), _c('search-bar'), _c('div', [_c('module-box', _vm._l((_vm.topContacts), function(item) {
+  }), _c('search-bar'), _c('div', [_c('module-box', _vm._l((_vm.topContacts), function(item, i) {
     return _c('module-item', {
+      key: i,
       attrs: {
         "data": item
       }
@@ -4240,7 +4275,7 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
+  "page": {
     "flex": 1,
     "justifyContent": "flex-start",
     "paddingTop": "90",
@@ -4336,8 +4371,11 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
+  return _c('scroller', {
+    staticClass: ["page"],
+    attrs: {
+      "showScrollbar": "false"
+    }
   }, [_c('header-bar', {
     attrs: {
       "title": "发现"
@@ -4346,6 +4384,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('find_icon-circle.png'),
         text: '朋友圈'
@@ -4355,6 +4394,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('find_icon-qrcode.png'),
         text: '扫一扫'
@@ -4362,6 +4402,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('find_icon-shake.png'),
         text: '摇一摇'
@@ -4371,6 +4412,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('find_icon-shopping.png'),
         text: '购物'
@@ -4378,6 +4420,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('find_icon-moregame.png'),
         text: '游戏'
@@ -4436,11 +4479,11 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
+  "page": {
     "flex": 1,
     "justifyContent": "flex-start",
     "paddingTop": "90",
-    "paddingBottom": "101",
+    "paddingBottom": "100",
     "backgroundColor": "#fbf9fe"
   },
   "gap": {
@@ -4511,6 +4554,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 
 exports.default = {
   components: {
@@ -4533,16 +4578,20 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
+  return _c('scroller', {
+    staticClass: ["page"],
+    attrs: {
+      "showScrollbar": "false"
+    }
   }, [_c('header-bar', {
     attrs: {
       "title": "我的"
     }
-  }), _c('module-box', {
+  }), _c('div', [_c('module-box', {
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_more-my-album.png'),
         text: '相册'
@@ -4550,6 +4599,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_more-my-favorites.png'),
         text: '收藏'
@@ -4557,6 +4607,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_more-my-bank-card.png'),
         text: '钱包'
@@ -4564,6 +4615,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_my-card-package-icon.png'),
         text: '卡券'
@@ -4573,6 +4625,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_more-expression.png'),
         text: '表情'
@@ -4582,12 +4635,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["gap"]
   }, [_c('module-item', {
     attrs: {
+      "size": "m",
       "data": {
         icon: _vm.local('me_more-setting.png'),
         text: '设置'
       }
     }
-  })], 1), _c('tab-bar')], 1)
+  })], 1)], 1), _c('tab-bar')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -4640,27 +4694,13 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "logo": {
-    "width": "424",
-    "height": "200"
-  },
-  "greeting": {
-    "textAlign": "center",
-    "marginTop": "70",
-    "fontSize": "50",
-    "color": "#41B883"
-  },
-  "message": {
-    "marginTop": "30",
-    "marginRight": "30",
-    "marginBottom": "30",
-    "marginLeft": "30",
-    "fontSize": "32",
-    "color": "#727272"
+  "app-wrapper": {
+    "position": "absolute",
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "bottom": 0,
+    "zIndex": 0
   }
 }
 
@@ -4700,9 +4740,9 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('router-view')], 1)
+  return _c('div', [_c('router-view', {
+    staticClass: ["app-wrapper"]
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -4716,17 +4756,24 @@ module.exports.render._withStripped = true
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _weex$config = weex.config,
+    env = _weex$config.env,
+    bundleUrl = _weex$config.bundleUrl;
+
+
+var pageHeight = env.deviceHeight / (env.deviceWidth / 750);
+
 // 获取图片在三端上不同的路径
 // e.g. 图片文件名是 test.jpg, 转换得到的图片地址为
 // - H5      : dev/images/test.jpg    dev和所在html路径同级
 // - Android : local:///test          local代表项目各dpi目录,一般放在hdpi里一张即可
 // - iOS     : local///test.jpg       local代表从项目中全局扫描 test.jpg可放至项目中任何目录
 function local(imgName) {
-  var platform = weex.config.env.platform.toLocaleLowerCase();
+  var platform = env.platform.toLocaleLowerCase();
   var path = '';
 
   // 开发模式
-  var host = weex.config.bundleUrl.match(/\/\/([^\/]+?)\//)[1];
+  var host = bundleUrl.match(/\/\/([^\/]+?)\//)[1];
   if (host.split('.')[0] === '192') {
     return '/src/dev/images/' + imgName;
   }
@@ -4744,10 +4791,22 @@ function local(imgName) {
   return path;
 }
 
+function and(val, s) {
+  return [val, val + '-' + s];
+}
+
 exports.default = {
   filters: {
-    local: local
+    local: local,
+    and: and
   },
+
+  data: function data() {
+    return {
+      pageHeight: pageHeight
+    };
+  },
+
 
   methods: {
     local: local

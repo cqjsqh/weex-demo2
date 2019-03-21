@@ -2,13 +2,13 @@
 <instant-run
     abi="x86"
     api-level="28"
-    build-mode="COLD"
+    build-mode="FULL"
     density="560dpi"
     format="10"
     plugin-version="3.3.1"
-    timestamp="1552283595958"
+    timestamp="1553072652298"
     token="8483562623567175021"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
@@ -26,10 +26,46 @@
     <artifact
         location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\instant-run-apk\debug\weex-app.apk"
         type="SPLIT_MAIN" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1552283127199"
+        timestamp="1553072652298"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\instant-run-apk\debug\weex-app.apk"
@@ -70,23 +106,6 @@
         <artifact
             location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1552283571779"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1552283595958"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="D:\Users\Desktop\weex-demo2\platforms\android\app\build\intermediates\instant-run-apk\debug\weex-app.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

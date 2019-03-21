@@ -1,6 +1,6 @@
 <template>
     <div class="w">
-        <image class="icon" :src="data.icon" v-if="data.icon"></image>
+        <image :class="'icon' | and(size)" :src="data.icon" v-if="data.icon"/>
 
         <text class="text">{{data.text}}</text>
         <slot></slot>
@@ -24,7 +24,6 @@
     .icon{
         width: 64px;
         height: 64px;
-        font-size: 64px;
         border-radius: 4px;
         margin-right: 20px;
     }
@@ -33,10 +32,21 @@
         font-size: 30px;
         color: #000;
     }
+
+    .icon-m {
+        width: 46px;
+        height: 46px;
+        border-radius: 2px;
+        margin-right: 36px;
+    }
 </style>
 <script>
 export default {
   props: {
+    size: {
+      type: String,
+      default: 'l',
+    },
     data: {
       type: Object,
       default() {

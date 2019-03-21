@@ -3,7 +3,7 @@
         <div class="line"></div>
         <div class="left">
             <image class="icon" :src="data.avatar"></image>
-            <text class="notice" v-if="data.notice">{{data.notice}}</text>
+            <div class="notice" v-if="data.notice"><text class="notice-text">{{data.notice}}</text></div>
         </div>
         <div class="middle">
             <text class="name">{{data.author}}</text>
@@ -14,12 +14,9 @@
 </template>
 <style scoped>
     .w{
-        width: 750px;
-        padding: 15px;
+        padding: 0 15px;
         flex-direction: row;
-        justify-content: space-between;
         background-color: #fff;
-        position: relative;
     }
     .line{
         height: 1px;
@@ -31,7 +28,7 @@
         bottom: 0;
     }
     .left{
-        position: relative;
+        padding: 15px 20px 15px 0;
     }
     .icon{
         width: 96px;
@@ -39,23 +36,26 @@
         border-radius: 10px;
     }
     .notice{
-        min-width: 20px;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
         height: 36px;
-        line-height: 36px;
         padding: 0 8px;
-        text-align: center;
         border-radius: 18px;
         background-color: #f43531;
+        position: absolute;
+        right: 3px;
+        top: 5px;
+        z-index: 2;
+    }
+    .notice-text{
         font-size: 24px;
         color: #fff;
-        position: absolute;
-        right: -18px;
-        top: -10px;
     }
     .middle{
+        padding: 15px 0;
         flex: 1;
         justify-content: space-between;
-        padding-left: 20px;
     }
     .name{
         font-size: 32px;
@@ -68,6 +68,7 @@
         text-overflow: ellipsis;
     }
     .right{
+        padding: 15px 0;
         font-size: 26px;
         color: #b8b8b8;
     }
