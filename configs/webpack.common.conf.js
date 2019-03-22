@@ -70,7 +70,7 @@ const getPageFileContent = (source) => {
   return dependence + contents;
 };
 const getPageFile = (pathArr) => {
-  var entrys = {};
+  var _weexEntry ={}, _webEntry = {};
   
   if (typeof pathArr === 'string') {
     pathArr = [pathArr];
@@ -78,22 +78,22 @@ const getPageFile = (pathArr) => {
   
   pathArr.forEach( item => {
     glob.sync(item).forEach( filePath => {
-      let extname = path.extname(filePath);
-      let basename = path.basename(filePath, extname);
-      let fullname = path.join(__dirname, '../', filePath);
+      let fullpath = path.join(__dirname, '../', filePath);
+      let { dir, name, ext } = path.parse(filePath);
   
-      basename = `page/${basename}`.toLocaleLowerCase();
-      const pageFilePath = `${basename}.js`;
+      let routername = `${name.replace(/_/g, '/')}`.toLocaleLowerCase(); // 命名
+      
+      const pageFilePath = `${routername}.js`;
       const pageFile = path.join(vueWebTemp, pageFilePath);
-      fs.outputFileSync(pageFile, getPageFileContent(path.relative(path.join(pageFile, '../'), fullname)));
+      fs.outputFileSync(pageFile, getPageFileContent(path.relative(path.join(pageFile, '../'), fullpath)));
   
-      entrys[basename] = pageFile;
+      _webEntry[routername] = pageFile;
+      _weexEntry[routername] = fullpath + '?entry=true';
     })
   })
   
-  return entrys;
+  return {_weexEntry, _webEntry};
 };
-const pageEntry = getPageFile(['src/pages/*.vue']);
 
 // The entry file for web needs to add some library. such as vue, weex-vue-render
 // 1. src/entry.js 
@@ -103,6 +103,12 @@ const pageEntry = getPageFile(['src/pages/*.vue']);
 // 2. src/router/index.js
 // import Vue from 'vue'
 const webEntry = getEntryFile();
+
+
+// 多页
+const {_weexEntry, _webEntry} = getPageFile(['src/pages/*.vue', 'src/pages/**/*.vue', 'src/pages/*.js']);
+Object.assign(weexEntry, _weexEntry);
+Object.assign(webEntry, _webEntry);
 
 
 const createLintingRule = () => ({
@@ -146,7 +152,7 @@ const plugins = [
 
 // Config for compile jsbundle for web.
 const webConfig = {
-  entry: Object.assign(webEntry, pageEntry, {
+  entry: Object.assign(webEntry, {
     'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
   }),
   output: {
@@ -225,8 +231,7 @@ const webConfig = {
 };
 // Config for compile jsbundle for native.
 const weexConfig = {
-  //entry: weexEntry,
-  entry: Object.assign(weexEntry, pageEntry),
+  entry: weexEntry,
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].js'

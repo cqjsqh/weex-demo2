@@ -35,6 +35,49 @@ function and(val, s) {
   return [val, `${val}-${s}`];
 }
 
+// navigator跳转
+function page(jsName) {
+  const platform = env.platform.toLocaleLowerCase();
+  let path = '';
+
+  // 开发模式
+  /*let host = bundleUrl.match(/\/\/([^\/]+?)\//)[1];
+  if (host.split('.')[0] === '192') {
+    return `/dist/${jsName}.js`;
+  }*/
+
+  if (platform === 'android') {
+    path = `file://assets/dist/${jsName}.js`;
+  } else if(platform === 'ios') {
+    path = `${bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1)}${jsName}.js`;
+  } else {
+    path = `/${jsName}.html`;
+  }
+
+  return path;
+}
+
+function M(moduleName) {
+  const module = weex.requireModule(moduleName);
+  if (module === undefined) {
+    console.warn(`模块【${moduleName}】未注册`);
+  } else if (module && Object.keys(module).length === 0){
+    console.warn(`模块${moduleName}已注册,但环境不支持`);
+  }
+  return module;
+}
+
+function navPush(options, callback) {
+  if (typeof options === 'string') {
+    options = {
+      url: options,
+      animated: 'true'
+    };
+  }
+
+  // console.log('路由跳转 -> ' + options.url);
+  this.M('navigator').push(options, callback);
+}
 
 export default {
   filters: {
@@ -50,5 +93,8 @@ export default {
 
   methods: {
     local,
+    page,
+    M,
+    navPush,
   },
 };

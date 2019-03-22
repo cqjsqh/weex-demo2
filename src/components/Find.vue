@@ -3,7 +3,7 @@
         <header-bar title="发现"/>
 
         <module-box class="gap">
-            <module-item size="m" :data="{ icon: local('find_icon-circle.png'), text: '朋友圈'}"/>
+            <module-item size="m" :data="{ icon: local('find_icon-circle.png'), text: '朋友圈'}" @tap="navPush(page('find/friend'))"/>
         </module-box>
 
         <module-box class="gap">
