@@ -79,6 +79,10 @@ function navPush(options, callback) {
   this.M('navigator').push(options, callback);
 }
 
+function log(...arg) {
+  console.info(...arg);
+}
+
 export default {
   filters: {
     local,
@@ -96,5 +100,6 @@ export default {
     page,
     M,
     navPush,
+    log,
   },
 };

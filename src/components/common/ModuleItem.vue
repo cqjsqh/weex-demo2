@@ -1,5 +1,5 @@
 <template>
-    <div class="w" @click="e => $emit('tap', e)">
+    <div class="w" @click="$emit('tap', $event)">
         <image :class="'icon' | and(size)" :src="data.icon" v-if="data.icon"/>
 
         <text class="text">{{data.text}}</text>

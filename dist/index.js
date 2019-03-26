@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,14 +73,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(11)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(12)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(13)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -155,6 +155,90 @@ module.exports = __vue_exports__
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "w": {
+    "height": "90",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "backgroundColor": "#1b1b1b",
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "zIndex": 9
+  },
+  "title": {
+    "flex": 1,
+    "fontSize": "34",
+    "textAlign": "center",
+    "color": "#ffffff",
+    "textOverflow": "ellipsis"
+  }
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    title: {
+      type: String,
+      default: '标题'
+    }
+  },
+  methods: {}
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["w"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.title))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -198,7 +282,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -242,7 +326,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -286,13 +370,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _router = __webpack_require__(6);
+var _router = __webpack_require__(9);
 
 var _router2 = _interopRequireDefault(_router);
 
@@ -317,7 +401,7 @@ new Vue(Vue.util.extend({ el: '#root', router: _router2.default }, _App2.default
 _router2.default.push('/');
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,11 +411,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vueRouter = __webpack_require__(7);
+var _vueRouter = __webpack_require__(10);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _Home = __webpack_require__(8);
+var _Home = __webpack_require__(11);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -359,7 +443,7 @@ var router = new _vueRouter2.default({
 exports.default = router;
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2985,18 +3069,18 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(9)
+__vue_styles__.push(__webpack_require__(12)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(10)
+__vue_exports__ = __webpack_require__(13)
 
 /* template */
 var __vue_template__ = __webpack_require__(28)
@@ -3029,7 +3113,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3043,7 +3127,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3061,7 +3145,7 @@ var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _SearchBar = __webpack_require__(4);
+var _SearchBar = __webpack_require__(7);
 
 var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
@@ -3144,90 +3228,6 @@ exports.default = {
 
   methods: {}
 };
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "w": {
-    "height": "90",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "backgroundColor": "#1b1b1b",
-    "position": "fixed",
-    "top": 0,
-    "left": 0,
-    "right": 0,
-    "zIndex": 9
-  },
-  "title": {
-    "flex": 1,
-    "fontSize": "34",
-    "textAlign": "center",
-    "color": "#ffffff",
-    "textOverflow": "ellipsis"
-  }
-}
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    title: {
-      type: String,
-      default: '标题'
-    }
-  },
-  methods: {}
-};
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["w"]
-  }, [_c('text', {
-    staticClass: ["title"]
-  }, [_vm._v(_vm._s(_vm.title))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ }),
 /* 14 */
@@ -3931,15 +3931,15 @@ var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _SearchBar = __webpack_require__(4);
+var _SearchBar = __webpack_require__(7);
 
 var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
-var _ModuleBox = __webpack_require__(2);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(3);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4189,7 +4189,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: ["w"],
     on: {
-      "click": function (e) { return _vm.$emit('tap', e); }
+      "click": function($event) {
+        _vm.$emit('tap', $event)
+      }
     }
   }, [(_vm.data.icon) ? _c('image', {
     class: _vm._f("and")('icon', _vm.size),
@@ -4309,11 +4311,11 @@ var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _ModuleBox = __webpack_require__(2);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(3);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4518,11 +4520,11 @@ var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _ModuleBox = __webpack_require__(2);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(3);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4847,6 +4849,12 @@ function navPush(options, callback) {
   this.M('navigator').push(options, callback);
 }
 
+function log() {
+  var _console;
+
+  (_console = console).info.apply(_console, arguments);
+}
+
 exports.default = {
   filters: {
     local: local,
@@ -4864,7 +4872,8 @@ exports.default = {
     local: local,
     page: page,
     M: M,
-    navPush: navPush
+    navPush: navPush,
+    log: log
   }
 };
 
