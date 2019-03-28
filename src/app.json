@@ -1,0 +1,8 @@
+{
+  "pages": {
+    "find/friend": "pages/Find_Friend.vue"
+  },
+  "tabBar": {
+
+  }
+}

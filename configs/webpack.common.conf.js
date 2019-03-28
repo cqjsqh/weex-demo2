@@ -69,31 +69,31 @@ const getPageFileContent = (source) => {
   
   return dependence + contents;
 };
-const getPageFile = (pathArr) => {
+const getPageFile = (fullpath, routerName) => {
   var _weexEntry ={}, _webEntry = {};
   
+  const pageFilePath = `${routerName}.js`;
+  const pageFile = path.join(vueWebTemp, pageFilePath);
+  fs.outputFileSync(pageFile, getPageFileContent(path.relative(path.join(pageFile, '../'), fullpath)));
+
+  _webEntry[routerName] = pageFile;
+  _weexEntry[routerName] = fullpath + '?entry=true';
+
+  return {_weexEntry, _webEntry};
+};
+
+const walkFile = (pathArr, callback) => {
   if (typeof pathArr === 'string') {
     pathArr = [pathArr];
   }
   
   pathArr.forEach( item => {
     glob.sync(item).forEach( filePath => {
-      let fullpath = path.join(__dirname, '../', filePath);
-      let { dir, name, ext } = path.parse(filePath);
-  
-      let routername = `${name.replace(/_/g, '/')}`.toLocaleLowerCase(); // 命名
-      
-      const pageFilePath = `${routername}.js`;
-      const pageFile = path.join(vueWebTemp, pageFilePath);
-      fs.outputFileSync(pageFile, getPageFileContent(path.relative(path.join(pageFile, '../'), fullpath)));
-  
-      _webEntry[routername] = pageFile;
-      _weexEntry[routername] = fullpath + '?entry=true';
+      callback && callback(filePath);
     })
   })
-  
-  return {_weexEntry, _webEntry};
 };
+
 
 // The entry file for web needs to add some library. such as vue, weex-vue-render
 // 1. src/entry.js 
@@ -106,9 +106,27 @@ const webEntry = getEntryFile();
 
 
 // 多页
-const {_weexEntry, _webEntry} = getPageFile(['src/pages/*.vue', 'src/pages/**/*.vue', 'src/pages/*.js']);
-Object.assign(weexEntry, _weexEntry);
-Object.assign(webEntry, _webEntry);
+var { pages } = require('../src/app.json');
+let pagesType = Object.prototype.toString.call(pages).slice(8, -1).toLowerCase();
+if (pagesType == 'string' || pagesType == 'array') {
+  walkFile(pages, function (filePath) {
+    let fullpath = path.join(__dirname, '../src', filePath);
+    let {dir, name, ext} = path.parse(fullpath);
+    let routerName = `${name.replace(/_/g, '/')}`.toLocaleLowerCase(); // 命名
+    
+    const {_weexEntry, _webEntry} = getPageFile(fullpath, routerName);
+    Object.assign(weexEntry, _weexEntry);
+    Object.assign(webEntry, _webEntry);
+  });
+} else if (pagesType == 'object') {
+  for (let routerName in pages) {
+    let fullpath = path.join(__dirname, '../src', pages[routerName]);
+    
+    const {_weexEntry, _webEntry} = getPageFile(fullpath, routerName);
+    Object.assign(weexEntry, _weexEntry);
+    Object.assign(webEntry, _webEntry);
+  }
+}
 
 
 const createLintingRule = () => ({
