@@ -384,21 +384,28 @@ var _App = __webpack_require__(47);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _mixins = __webpack_require__(51);
+var _wx = __webpack_require__(51);
+
+var _wx2 = _interopRequireDefault(_wx);
+
+var _mixins = __webpack_require__(52);
 
 var _mixins2 = _interopRequireDefault(_mixins);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Vue.mixin(_mixins2.default);
-
-/* eslint-disable no-new */
 /* global Vue */
 
 /* weex initialized here, please do not move this line */
+Vue.prototype.wx = global.wx = _wx2.default;
+Vue.mixin(_mixins2.default);
+
+/* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: _router2.default }, _App2.default));
 
 _router2.default.push('/');
+
+// modifications need to be start
 
 /***/ }),
 /* 9 */
@@ -4766,6 +4773,208 @@ module.exports.render._withStripped = true
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _weex$config = weex.config,
+    env = _weex$config.env,
+    bundleUrl = _weex$config.bundleUrl;
+
+var platform = env.platform.toLowerCase();
+
+// 导入模块
+function M(moduleName) {
+  var module = weex.requireModule(moduleName);
+  if (module === undefined) {
+    console.warn('\u6A21\u5757\u3010' + moduleName + '\u3011\u672A\u6CE8\u518C');
+  } else if (module && Object.keys(module).length === 0) {
+    console.warn('\u6A21\u5757' + moduleName + '\u5DF2\u6CE8\u518C,\u4F46\u73AF\u5883\u4E0D\u652F\u6301');
+  }
+  return module;
+}
+// 基础
+var U = {
+  typeof: function _typeof(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+  },
+  isFunction: function isFunction(obj) {
+    return U.typeof(obj) === 'function';
+  },
+  isString: function isString(obj) {
+    return U.typeof(obj) === 'string';
+  },
+  isObject: function isObject(obj) {
+    return U.typeof(obj) === 'object';
+  },
+  isEmptyObject: function isEmptyObject(obj) {
+    return U.isObject(obj) && Object.keys(obj).length === 0;
+  }
+};
+// 环境
+var E = {
+  isWeb: platform === 'web',
+  isIos: platform === 'ios',
+  isAndroid: platform === 'android',
+
+  isTaobao: /(tb|taobao|淘宝)/i.test(env.appName),
+  isTmall: /(tm|tmall|天猫)/i.test(env.appName),
+  isTrip: env.appName === 'LX',
+  isAlipay: env.appName === 'AP'
+};
+E.isIPhoneX = E.isIos && [2436, 2688, 1792].includes(env.deviceHeight);
+E.isAliWeex = E.isTmall || E.isTrip || E.isTaobao;
+
+// 数据缓存
+var Storage = {
+  setStorage: function setStorage(key, value, callback) {
+    M('storage').setItem(key, value, callback);
+  },
+  getStorage: function getStorage(key, callback) {
+    M('storage').getItem(key, function (e) {
+      if (U.isFunction(callback)) callback(e.data || undefined);
+    });
+  },
+  removeStorage: function removeStorage(key, callback) {
+    M('storage').removeItem(key, callback);
+  },
+  clearStorage: function clearStorage() {
+    Storage.StoragegetStorageKeys(function (arr) {
+      return arr.forEach(function (val) {
+        return Storage.removeStorage(val);
+      });
+    });
+  },
+  getStorageLength: function getStorageLength(callback) {
+    M('storage').length(function (e) {
+      if (U.isFunction(callback)) callback(e.data);
+    });
+  },
+  getStorageKeys: function getStorageKeys(callback) {
+    M('storage').getAllKeys(function (e) {
+      if (U.isFunction(callback)) callback(e.data);
+    });
+  }
+};
+
+// 网络请求
+var _interceptors = {};
+var Request = {
+  request: function request(options, callback, progressCallback) {
+    var opt = {
+      method: 'POST', // GET | POST
+      url: '',
+      headers: {},
+      dataType: 'form', // form | json
+      type: 'json', // json | text | jsonp
+      body: ''
+    };
+
+    opt = Object.assign(opt, options);
+    if (opt === 'GET') {
+      opt.url += opt.url.indexOf('?') === -1 ? '?' : '&' + encodedFormUrl(opt.body);
+      opt.body = '';
+    } else if (opt === 'POST') {
+      if (opt.dataType === 'form') {
+        opt.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        opt.body = encodedFormUrl(opt.body);
+      } else if (opt.dataType === 'json') {
+        opt.headers['Content-Type'] = 'application/json';
+        opt.body = JSON.stringify(opt.body);
+      }
+    }
+
+    function encodedFormUrl(data) {
+      var arr = [];
+      for (var key in data) {
+        if (data[key] instanceof Array) {
+          for (var i = 0, len = data[key].length; i < len; i++) {
+            arr.push(encodeURIComponent(key + '[' + i + ']') + '=' + encodeURIComponent(data[key][i]));
+          }
+        } else {
+          arr.push(key + '=' + encodeURIComponent(data[key]));
+        }
+      }
+      return arr.join('&');
+    }
+
+    // 拦截
+    if (_interceptors.request) opt = _interceptors.request(opt) || opt;
+
+    M('stream').fetch(opt, function (res) {
+      // 拦截
+      if (res.ok) {
+        if (_interceptors.response) res = _interceptors.response(res) || res;
+      } else {
+        if (_interceptors.responseError) res = _interceptors.responseError(res) || res;
+      }
+
+      if (U.isFunction(callback)) callback(res);
+    }, progressCallback);
+  },
+  requestInterceptors: function requestInterceptors(option) {
+    _interceptors = Object.assign({ request: null, response: null, responseError: null }, option);
+  },
+  requestPost: function requestPost(url, param, callback) {
+    Request.request({ method: 'POST', url: url, body: param }, callback);
+  },
+  requestGet: function requestGet(url, param, callback) {
+    Request.request({ method: 'GET', url: url, body: param }, callback);
+  }
+};
+
+// WebSocket
+var _ws = void 0;
+var WebSocket = {
+  connectSocket: function connectSocket(url) {
+    var protocol = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    _ws = M('webSocket');
+    _ws.WebSocket(url, protocol);
+  },
+  sendSocketMessage: function sendSocketMessage(data) {
+    _ws.send(data);
+  },
+  closeSocket: function closeSocket(code, reason) {
+    _ws.close(code, reason);
+  },
+  onSocketOpen: function onSocketOpen(callback) {
+    _ws.onopen = callback;
+  },
+  onSocketMessage: function onSocketMessage(callback) {
+    _ws.onmessage = callback;
+  },
+  onSocketClose: function onSocketClose(callback) {
+    _ws.onclose = callback;
+  },
+  onSocketError: function onSocketError(callback) {
+    _ws.onerror = callback;
+  }
+};
+
+exports.default = _extends({
+  M: M,
+  U: U,
+  E: E
+
+}, Storage, Request, WebSocket);
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _wx = __webpack_require__(51);
+
+var _wx2 = _interopRequireDefault(_wx);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var _weex$config = weex.config,
     env = _weex$config.env,
     bundleUrl = _weex$config.bundleUrl;
@@ -4827,16 +5036,6 @@ function page(jsName) {
   return path;
 }
 
-function M(moduleName) {
-  var module = weex.requireModule(moduleName);
-  if (module === undefined) {
-    console.warn('\u6A21\u5757\u3010' + moduleName + '\u3011\u672A\u6CE8\u518C');
-  } else if (module && Object.keys(module).length === 0) {
-    console.warn('\u6A21\u5757' + moduleName + '\u5DF2\u6CE8\u518C,\u4F46\u73AF\u5883\u4E0D\u652F\u6301');
-  }
-  return module;
-}
-
 function navPush(options, callback) {
   if (typeof options === 'string') {
     options = {
@@ -4844,9 +5043,8 @@ function navPush(options, callback) {
       animated: 'true'
     };
   }
-
   // console.log('路由跳转 -> ' + options.url);
-  this.M('navigator').push(options, callback);
+  _wx2.default.M('navigator').push(options, callback);
 }
 
 function log() {
@@ -4871,7 +5069,6 @@ exports.default = {
   methods: {
     local: local,
     page: page,
-    M: M,
     navPush: navPush,
     log: log
   }

@@ -1,3 +1,4 @@
+import wx from '@/assets/wx';
 const { env, bundleUrl } = weex.config;
 
 
@@ -57,16 +58,6 @@ function page(jsName) {
   return path;
 }
 
-function M(moduleName) {
-  const module = weex.requireModule(moduleName);
-  if (module === undefined) {
-    console.warn(`模块【${moduleName}】未注册`);
-  } else if (module && Object.keys(module).length === 0){
-    console.warn(`模块${moduleName}已注册,但环境不支持`);
-  }
-  return module;
-}
-
 function navPush(options, callback) {
   if (typeof options === 'string') {
     options = {
@@ -74,9 +65,8 @@ function navPush(options, callback) {
       animated: 'true'
     };
   }
-
   // console.log('路由跳转 -> ' + options.url);
-  this.M('navigator').push(options, callback);
+  wx.M('navigator').push(options, callback);
 }
 
 function log(...arg) {
@@ -98,7 +88,6 @@ export default {
   methods: {
     local,
     page,
-    M,
     navPush,
     log,
   },
