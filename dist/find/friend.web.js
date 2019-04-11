@@ -167,7 +167,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(12)
+var listToStyles = __webpack_require__(13)
 
 /*
 type StyleObject = {
@@ -506,13 +506,13 @@ module.exports = g;
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(13)
+  __webpack_require__(14)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(15),
-  /* template */
   __webpack_require__(16),
+  /* template */
+  __webpack_require__(21),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9155,11 +9155,55 @@ if (inBrowser) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(9).setImmediate))
 
 /***/ }),
-/* 7 */,
-/* 8 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(17)
+}
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(19),
+  /* template */
+  __webpack_require__(20),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-98008d68",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\Users\\Desktop\\weex-demo2\\src\\components\\common\\IconFont.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] IconFont.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-98008d68", Component.options)
+  } else {
+    hotAPI.reload("data-v-98008d68", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -9215,7 +9259,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(9);
+__webpack_require__(10);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -9229,7 +9273,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -9419,10 +9463,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(10)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(11)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -9612,7 +9656,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20354,7 +20398,7 @@ console.log('START WEEX VUE RENDER: 1.0.36, Build 2018-12-29 17:52.');
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /**
@@ -20387,13 +20431,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -20413,7 +20457,7 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -20427,7 +20471,109 @@ exports.push([module.i, "\n.w[data-v-3503c112]{\n    height: 1.2rem;\n    flex-d
 
 
 /***/ }),
-/* 15 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _IconFont = __webpack_require__(7);
+
+var _IconFont2 = _interopRequireDefault(_IconFont);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  props: {
+    title: {
+      type: String,
+      default: '标题'
+    }
+  },
+  components: {
+    IconFont: _IconFont2.default
+  },
+  methods: {}
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(18);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(1)("4cfb52f4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-98008d68\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./IconFont.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-98008d68\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./IconFont.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.iconfont[data-v-98008d68] {\n    font-family: iconfont;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20444,36 +20590,43 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
   props: {
-    title: {
+    src: {
       type: String,
-      default: '标题'
+      default: '&#xe609;'
     }
   },
-  methods: {}
+  filters: {
+    heDecode: function heDecode(val) {
+      return unescape(val.replace(/^&#x(.*);$/, '%u$1'));
+    }
+  }
 };
 
 /***/ }),
-/* 16 */
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
+    staticClass: "iconfont weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v(_vm._s(_vm._f("heDecode")(_vm.src)))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-98008d68", module.exports)
+  }
+}
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20482,12 +20635,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('p', {
+  }, [_c('div', {
+    staticClass: "left weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_vm._t("left", null, {})], 2), _vm._v(" "), _c('p', {
     staticClass: "title weex-el weex-text",
     attrs: {
       "weex-type": "text"
     }
-  }, [_vm._v(_vm._s(_vm.title))])])
+  }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('div', {
+    staticClass: "right weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_vm._t("right", [_c('icon-font', {
+    attrs: {
+      "src": "&#xe602;"
+    }
+  })], {})], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20498,9 +20665,9 @@ if (false) {
 }
 
 /***/ }),
-/* 17 */,
-/* 18 */,
-/* 19 */
+/* 22 */,
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20571,7 +20738,8 @@ function page(jsName) {
   }*/
 
   if (platform === 'android') {
-    path = 'file://assets/dist/' + jsName + '.js';
+    //path = `file://assets/dist/${jsName}.js`;
+    path = '' + bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1) + jsName + '.js';
   } else if (platform === 'ios') {
     path = '' + bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1) + jsName + '.js';
   } else {
@@ -20620,11 +20788,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
 /* 25 */,
 /* 26 */,
 /* 27 */,
@@ -20685,7 +20848,7 @@ var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _weexVueRender = __webpack_require__(11);
+var _weexVueRender = __webpack_require__(12);
 
 var _weexVueRender2 = _interopRequireDefault(_weexVueRender);
 
@@ -20697,7 +20860,7 @@ var _wx = __webpack_require__(5);
 
 var _wx2 = _interopRequireDefault(_wx);
 
-var _mixins = __webpack_require__(19);
+var _mixins = __webpack_require__(24);
 
 var _mixins2 = _interopRequireDefault(_mixins);
 
