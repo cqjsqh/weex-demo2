@@ -65,7 +65,7 @@ const getPageFileContent = (source) => {
   let contents = `import App from '${source}'\n`;
   contents += `import wx from '@/assets/wx';\n`;
   contents += `import mixins from '@/assets/mixins'\n\n`;
-  contents += `Vue.prototype.wx = global.wx = wx;\n`;
+  contents += `Vue.prototype.wx = wx;\n`;
   contents += `Vue.mixin(mixins);\n\n`;
   contents += `new Vue(Vue.util.extend({ el: '#root' }, App))`;
   

@@ -9,7 +9,8 @@ import App from '@/App';
 import wx from '@/assets/wx';
 import mixins from '@/assets/mixins';
 
-Vue.prototype.wx = global.wx = wx;
+// global.wx = wx;
+Vue.prototype.wx = wx;
 Vue.mixin(mixins);
 
 /* eslint-disable no-new */
