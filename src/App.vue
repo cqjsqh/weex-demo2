@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
     .app-wrapper {
         position: absolute;
         top:0;
