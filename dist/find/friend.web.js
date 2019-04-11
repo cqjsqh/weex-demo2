@@ -20539,7 +20539,7 @@ function local(imgName) {
   }
   // github
   if (host === 'raw.githubusercontent.com') {
-    return bundleUrl.split('dist')[0] + '/src/dev/images/' + imgName;
+    return bundleUrl.split('dist')[0] + 'src/dev/images/' + imgName;
   }
 
   if (platform === 'android') {
