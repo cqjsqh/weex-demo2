@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,14 +73,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(3)
+__vue_styles__.push(__webpack_require__(2)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(4)
+__vue_exports__ = __webpack_require__(3)
 
 /* template */
-var __vue_template__ = __webpack_require__(8)
+var __vue_template__ = __webpack_require__(4)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -117,55 +117,11 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(5)
+__vue_styles__.push(__webpack_require__(15)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(6)
-
-/* template */
-var __vue_template__ = __webpack_require__(7)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Users\\Desktop\\weex-demo2\\src\\components\\common\\IconFont.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-737dff19"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(19)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(20)
+__vue_exports__ = __webpack_require__(16)
 
 /* template */
 var __vue_template__ = __webpack_require__(21)
@@ -198,7 +154,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -223,7 +179,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -232,12 +188,31 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _IconFont = __webpack_require__(1);
-
-var _IconFont2 = _interopRequireDefault(_IconFont);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   props: {
@@ -245,122 +220,25 @@ exports.default = {
       type: String,
       default: '标题'
     }
-  },
-  components: {
-    IconFont: _IconFont2.default
   },
   methods: {}
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "iconfont": {
-    "fontFamily": "iconfont"
-  }
-}
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    src: {
-      type: String,
-      default: '&#xe609;'
-    }
-  },
-  filters: {
-    heDecode: function heDecode(val) {
-      return unescape(val.replace(/^&#x(.*);$/, '%u$1'));
-    }
-  }
 };
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', {
-    staticClass: ["iconfont"]
-  }, [_vm._v(_vm._s(_vm._f("heDecode")(_vm.src)))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 8 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["w"]
-  }, [_c('div', {
-    staticClass: ["left"]
-  }, [_vm._t("left")], 2), _c('text', {
+  }, [_c('text', {
     staticClass: ["title"]
-  }, [_vm._v(_vm._s(_vm.title))]), _c('div', {
-    staticClass: ["right"]
-  }, [_vm._t("right", [_c('icon-font', {
-    attrs: {
-      "src": "&#xe602;"
-    }
-  })])], 2)])
+  }, [_vm._v(_vm._s(_vm.title))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 9 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -404,7 +282,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 10 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -448,7 +326,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 11 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -492,7 +370,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 12 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -687,13 +565,13 @@ exports.default = _extends({
 }, Storage, Request, WebSocket);
 
 /***/ }),
-/* 13 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _router = __webpack_require__(14);
+var _router = __webpack_require__(10);
 
 var _router2 = _interopRequireDefault(_router);
 
@@ -701,7 +579,7 @@ var _App = __webpack_require__(48);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _wx = __webpack_require__(12);
+var _wx = __webpack_require__(8);
 
 var _wx2 = _interopRequireDefault(_wx);
 
@@ -711,10 +589,11 @@ var _mixins2 = _interopRequireDefault(_mixins);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// global.wx = wx;
 /* global Vue */
 
 /* weex initialized here, please do not move this line */
-Vue.prototype.wx = global.wx = _wx2.default;
+Vue.prototype.wx = _wx2.default;
 Vue.mixin(_mixins2.default);
 
 /* eslint-disable no-new */
@@ -725,7 +604,7 @@ _router2.default.push('/');
 // modifications need to be start
 
 /***/ }),
-/* 14 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -735,11 +614,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vueRouter = __webpack_require__(15);
+var _vueRouter = __webpack_require__(11);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _Home = __webpack_require__(16);
+var _Home = __webpack_require__(12);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -767,7 +646,7 @@ var router = new _vueRouter2.default({
 exports.default = router;
 
 /***/ }),
-/* 15 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3393,18 +3272,18 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 16 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(17)
+__vue_styles__.push(__webpack_require__(13)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(18)
+__vue_exports__ = __webpack_require__(14)
 
 /* template */
 var __vue_template__ = __webpack_require__(29)
@@ -3437,7 +3316,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 17 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3451,7 +3330,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 18 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3465,11 +3344,11 @@ var _HeaderBar = __webpack_require__(0);
 
 var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
 
-var _TabBar = __webpack_require__(2);
+var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _SearchBar = __webpack_require__(11);
+var _SearchBar = __webpack_require__(7);
 
 var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
@@ -3554,7 +3433,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 19 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3593,7 +3472,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 20 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3603,7 +3482,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _IconFont = __webpack_require__(1);
+var _IconFont = __webpack_require__(17);
 
 var _IconFont2 = _interopRequireDefault(_IconFont);
 
@@ -3692,6 +3571,104 @@ exports.default = {
     }
   }
 };
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(18)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(19)
+
+/* template */
+var __vue_template__ = __webpack_require__(20)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\Users\\Desktop\\weex-demo2\\src\\components\\common\\IconFont.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-737dff19"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "iconfont": {
+    "fontFamily": "iconfont"
+  }
+}
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: {
+    src: {
+      type: String,
+      default: '&#xe609;'
+    }
+  },
+  filters: {
+    heDecode: function heDecode(val) {
+      return unescape(val.replace(/^&#x(.*);$/, '%u$1'));
+    }
+  }
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('text', {
+    staticClass: ["iconfont"]
+  }, [_vm._v(_vm._s(_vm._f("heDecode")(_vm.src)))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 /* 21 */
@@ -4153,19 +4130,19 @@ var _HeaderBar = __webpack_require__(0);
 
 var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
 
-var _TabBar = __webpack_require__(2);
+var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _SearchBar = __webpack_require__(11);
+var _SearchBar = __webpack_require__(7);
 
 var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
-var _ModuleBox = __webpack_require__(9);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(10);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4533,15 +4510,15 @@ var _HeaderBar = __webpack_require__(0);
 
 var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
 
-var _TabBar = __webpack_require__(2);
+var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _ModuleBox = __webpack_require__(9);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(10);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4742,15 +4719,15 @@ var _HeaderBar = __webpack_require__(0);
 
 var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
 
-var _TabBar = __webpack_require__(2);
+var _TabBar = __webpack_require__(1);
 
 var _TabBar2 = _interopRequireDefault(_TabBar);
 
-var _ModuleBox = __webpack_require__(9);
+var _ModuleBox = __webpack_require__(5);
 
 var _ModuleBox2 = _interopRequireDefault(_ModuleBox);
 
-var _ModuleItem = __webpack_require__(10);
+var _ModuleItem = __webpack_require__(6);
 
 var _ModuleItem2 = _interopRequireDefault(_ModuleItem);
 
@@ -4993,7 +4970,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _wx = __webpack_require__(12);
+var _wx = __webpack_require__(8);
 
 var _wx2 = _interopRequireDefault(_wx);
 
@@ -5019,6 +4996,10 @@ function local(imgName) {
   var host = bundleUrl.match(/\/\/([^\/]+?)\//)[1];
   if (host.split('.')[0] === '192') {
     return '/src/dev/images/' + imgName;
+  }
+  // github
+  if (host === 'raw.githubusercontent.com') {
+    return bundleUrl.split('dist')[0] + 'src/dev/images/' + imgName;
   }
 
   if (platform === 'android') {

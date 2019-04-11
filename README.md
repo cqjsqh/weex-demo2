@@ -1,27 +1,35 @@
-# Introduction
+# 基于Weex仿微信应用demo
 
-This boilerplate is targeted towards large, serious projects and assumes you are somewhat familiar with Webpack and `weex-loader`. 
+# 介绍
 
-## Quickstart
+这是一个简单的weex练习例子，已集成weex-ui，支持单页面和多页面，开发中...
 
-To use this template, scaffold a project with [weexpack v1.1.1+](https://github.com/weexteam/weex-pack).
+![Image text](/github_preview.png)
+
+使用 [Weex Playground](https://weex.apache.org/zh/tools/playground.html?source=https%3a%2f%2fgithub.com%2fcqjsqh%2fweex-demo2) 扫描二维码，即可预览demo！
+如果帮助到你，请Star一下！
+
+## 开发前准备
 
 ``` bash
-$ npm install -g weex-toolkit
-$ weex create my-project # default will create the webpack template
-$ cd my-project && npm start
+$ cd weex-demo2
+$ npm install
 ```
 
-## How to use less/sass/pug
+## 开发
 
-Take `sass` for example:
-
-```
-$ npm i node-sass sass-loader --save
+``` bash
+$ npm start
 ```
 
-Then, you just need to change the `style` tag as: `<style lang="sass"><style>`.
+## 运行
 
-## How to create your own template
+``` bash
+$ npm run android
+```
 
-See [How-to-create-your-own-template](https://github.com/weex-templates/How-to-create-your-own-template).
+## 打包
+
+``` bash
+$ npm run pack:android
+```
