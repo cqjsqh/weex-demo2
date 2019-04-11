@@ -6,7 +6,7 @@
 
 ![Image text](/github_preview.png)
 
-使用 [Weex Playground](https://weex.apache.org/zh/tools/playground.html?source=https%3a%2f%2fgithub.com%2fcqjsqh%2fweex-demo2) 或 淘宝 扫描二维码，即可预览demo！
+使用 [Weex Playground](https://weex.apache.org/zh/tools/playground.html?source=https%3a%2f%2fgithub.com%2fcqjsqh%2fweex-demo2) 扫描二维码，即可预览demo！
 如果帮助到你，请Star一下！
 
 ## 开发前准备
