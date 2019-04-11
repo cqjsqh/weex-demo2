@@ -52,7 +52,8 @@ function page(jsName) {
   }*/
 
   if (platform === 'android') {
-    path = `file://assets/dist/${jsName}.js`;
+    //path = `file://assets/dist/${jsName}.js`;
+    path = `${bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1)}${jsName}.js`;
   } else if(platform === 'ios') {
     path = `${bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1)}${jsName}.js`;
   } else {
