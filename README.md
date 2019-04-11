@@ -1,4 +1,4 @@
-### 基于Weex仿微信应用demo
+# 基于Weex仿微信应用demo
 
 # Introduction
 
